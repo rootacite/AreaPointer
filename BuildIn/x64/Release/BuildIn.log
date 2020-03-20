@@ -1,0 +1,8 @@
+﻿  pch.cpp
+  BuildIn.cpp
+    正在创建库 D:\VSProject\AreaPointer\x64\Release\BuildIn.lib 和对象 D:\VSProject\AreaPointer\x64\Release\BuildIn.exp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 186 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  BuildIn.vcxproj -> D:\VSProject\AreaPointer\x64\Release\BuildIn.dll
