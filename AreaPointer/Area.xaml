@@ -5,8 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AreaPointer"
         mc:Ignorable="d"
-        Title="Area" Height="450" Width="800" Closed="Window_Closed">
-    <Grid x:Name="SW">
-        
-    </Grid>
+        AllowsTransparency="True" Title="Area" Height="450" Width="800" Closed="Window_Closed" WindowStyle="None" MouseWheel="Window_MouseWheel" Opacity="1" MouseLeftButtonDown="Window_MouseLeftButtonDown" Background="#00000000" Foreground="{x:Null}">
+    <Grid x:Name="SW" Opacity="1"/>
 </Window>

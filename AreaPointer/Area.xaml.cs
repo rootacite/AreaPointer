@@ -21,6 +21,8 @@ namespace AreaPointer
     /// 
     public partial class Area : Window
     {
+        static public int loadH;
+        static public int loadW;
         static public Int32Rect mArea;
        static public MemoryStream mBit;
         static public byte[] Data;
@@ -55,19 +57,78 @@ namespace AreaPointer
             MainFarm.StreamSource = mBit;
             MainFarm.EndInit();
             //   MessageBox.Show("0");
-
-            CroppedBitmap asBit = new CroppedBitmap(MainFarm, mArea);
-
-            this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+            CroppedBitmap asBit;
+            try
             {
-                this.SW.Background = new ImageBrush(asBit);
-            });
+                 asBit = new CroppedBitmap(MainFarm, mArea);
+                this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                {
+                    this.SW.Background = new ImageBrush(asBit);
+                });
+            }
+            catch (Exception)
+            {
+                this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                {
+                    this.SW.Background = new ImageBrush(MainFarm);
+                });
+            }
+
+           
         //   MessageBox.Show("1");
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             MainWindow.thisPtr.Close();
+        }
+        static double rate = 1.0;
+        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                if (e.Delta < 0 && rate > 0.05) 
+                {
+                    if (Height * (rate - 0.05) < 50 || Width * (rate - 0.05) < 50)
+                        return;
+                    rate -= 0.05;
+                    this.Height = loadH * rate;
+                    this.Width = loadW * rate;
+                }
+                else
+                {
+                    if (Height * (rate + 0.05) > SystemParameters.WorkArea.Height || Width * (rate + 0.05) > SystemParameters.WorkArea.Width)
+                        return;
+                    rate += 0.05;
+                    this.Height = loadH * rate;
+                    this.Width = loadW * rate;
+                }
+            }
+            else
+            {
+                if (e.Delta < 0)
+                {
+                    if (this.Opacity > 0.05)
+                    {
+                        this.Opacity -= 0.03;
+                        SW.Background.Opacity -= 0.03;
+                    }
+                }
+                else
+                {
+                    if (this.Opacity < 1)
+                    {
+                        this.Opacity += 0.03;
+                        SW.Background.Opacity += 0.03;
+                    }
+                }
+            }
+           
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

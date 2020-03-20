@@ -137,19 +137,25 @@ namespace AreaPointer
 
                   this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                   {
-                      WinArea.Show();
+                     
                    
                       unsafe
                       {
-                       //   MessageBox.Show("l:" + (*(int*)pPoint).ToString()+"\n"+"t:" + (*(int*)(pPoint + 4)).ToString()+"\n"+"r:"+ (*(int*)(pPoint + 8)).ToString()+"\n"+"b:"+ (*(int*)(pPoint + 12)).ToString());
+                          //   MessageBox.Show("l:" + (*(int*)pPoint).ToString()+"\n"+"t:" + (*(int*)(pPoint + 4)).ToString()+"\n"+"r:"+ (*(int*)(pPoint + 8)).ToString()+"\n"+"b:"+ (*(int*)(pPoint + 12)).ToString());
 
-                          Area.mArea.X = *(int*)pPoint;
-                          Area.mArea.Y = *(int*)(pPoint + 4);
-                          Area.mArea.Width = (*(int*)(pPoint + 8))- *(int*)pPoint;
-                          Area.mArea.Height =  (*(int*)(pPoint + 12))- *(int*)(pPoint + 4);
+                          Area.mArea.X = *(int*)pPoint < (*(int*)(pPoint + 8)) ? *(int*)pPoint : (*(int*)(pPoint + 8));
+                          Area.mArea.Y = *(int*)(pPoint + 4) < (*(int*)(pPoint + 12)) ? *(int*)(pPoint + 4) : (*(int*)(pPoint + 12));
+                          Area.mArea.Width = Math.Abs( (*(int*)(pPoint + 8))- *(int*)pPoint);
+                          Area.mArea.Height = Math.Abs((*(int*)(pPoint + 12)) - *(int*)(pPoint + 4));
 
-                       //   MessageBox.Show(Area.mArea.ToString());
+                        
                       }
+                      //  MessageBox.Show(Area.mArea.ToString());
+                      Area.loadH = Area.mArea.Height;
+                      Area.loadW= Area.mArea.Width; 
+                      WinArea.Height = Area.mArea.Height;
+                      WinArea.Width = Area.mArea.Width;
+                      WinArea.Show();
                       Area.dispatcherTimer.Start();
 
                   });
@@ -168,6 +174,11 @@ namespace AreaPointer
         private void Window_Closed(object sender, EventArgs e)
         {
             TerminateProcess(GetCurrentProcess(), 1);
+        }
+
+        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+       //     this.Title = e.Delta.ToString() ;
         }
     }
 }

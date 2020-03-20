@@ -20,3 +20,10 @@ D:\VSProject\AreaPointer\AreaPointer\obj\x86\Release\netcoreapp3.1\AreaPointer.c
 D:\VSProject\AreaPointer\AreaPointer\obj\x86\Release\netcoreapp3.1\AreaPointer.dll
 D:\VSProject\AreaPointer\AreaPointer\obj\x86\Release\netcoreapp3.1\AreaPointer.pdb
 D:\VSProject\AreaPointer\AreaPointer\obj\x86\Release\netcoreapp3.1\AreaPointer.genruntimeconfig.cache
+D:\VSProject\AreaPointer\AreaPointer\obj\x86\Release\netcoreapp3.1\AreaPointer.csprojAssemblyReference.cache
+C:\Users\14980\Desktop\Release\netcoreapp3.1\AreaPointer.exe
+C:\Users\14980\Desktop\Release\netcoreapp3.1\AreaPointer.deps.json
+C:\Users\14980\Desktop\Release\netcoreapp3.1\AreaPointer.runtimeconfig.json
+C:\Users\14980\Desktop\Release\netcoreapp3.1\AreaPointer.runtimeconfig.dev.json
+C:\Users\14980\Desktop\Release\netcoreapp3.1\AreaPointer.dll
+C:\Users\14980\Desktop\Release\netcoreapp3.1\AreaPointer.pdb

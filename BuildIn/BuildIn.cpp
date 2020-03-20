@@ -55,16 +55,18 @@ HHOOK hOOk = NULL;
 RECT* result = NULL;
 
 LRESULT CALLBACK MouseProc(int code ,WPARAM wParam,LPARAM lParam) {
-
+    if (wParam == WM_LBUTTONDOWN)
+        return TRUE;
     if(wParam!=WM_LBUTTONUP)
         return CallNextHookEx(hOOk, code, wParam, lParam);
+
 
     if (ncase) {
         GetCursorPos(&p1);
         ScreenToClient(targetWnd, &p1);
         ncase = false;
-        return NULL;
-    }
+        return TRUE;
+    }else
     if (!ncase) {
         GetCursorPos(&p2);
         ScreenToClient(targetWnd, &p2);
@@ -78,7 +80,7 @@ LRESULT CALLBACK MouseProc(int code ,WPARAM wParam,LPARAM lParam) {
         result->right = p2.x<0?100:p2.x;
         result->bottom = p2.y<0?100:p2.y;
         compis = true;
-        return NULL;
+        return TRUE;
     }
 
     return CallNextHookEx(hOOk, code, wParam, lParam);

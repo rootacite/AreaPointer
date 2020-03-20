@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AreaPointer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="360" Width="610" SizeChanged="Window_SizeChanged" Closing="Window_Closing" Closed="Window_Closed">
+        Title="MainWindow" Height="360" Width="610" SizeChanged="Window_SizeChanged" Closing="Window_Closing" Closed="Window_Closed" MouseWheel="Window_MouseWheel">
     <Grid x:Name="MainGrid">
         <ComboBox x:Name="WndList" HorizontalAlignment="Left" Margin="105,27,0,0" VerticalAlignment="Top" Width="134" Height="24" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,27,0,0" Text="目标窗口：" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
